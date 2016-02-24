@@ -59,20 +59,25 @@ which i can follow to get my bot to the final location
 
 def find_path(int x, int y):
 	while (mapp[x][y] != 5):
-		if (x-1 >= 0 and mapp[x-1][y] == 3):					# LEFT
+		# LEFT
+		if (x-1 >= 0 and mapp[x-1][y] == 3):
 			up()
 			x--
-		elif (y+1 <= columns and mapp[x][y+1] == 3):					# DOWN
+		# DOWN
+		elif (y+1 <= columns and mapp[x][y+1] == 3):
 			right()
 			y++
-		elif (x+1 <= rows and mapp[x+1][y] == 3):					# RIGHT
+		# RIGHT
+		elif (x+1 <= rows and mapp[x+1][y] == 3):
 			down()
 			x++
-		elif (y-1 >= 0 and mapp[x][y-1] == 3):					# UP
+		# UP
+		elif (y-1 >= 0 and mapp[x][y-1] == 3):
 			left()
 			y--
 	else:
-		return "you have reached your destination" # put a different kind of result
+		# put a different kind of result
+		return "you have reached your destination"
 
 """
 I have reached my final destination
@@ -100,6 +105,7 @@ def mapping(x, y, mapp): # x and y being the current position of the bot
 					y = j
 					click_picture(i,j)
 					mapp[i-1][j] = 0
+					break
 				elif (j+1 <= columns and mapp[i][j+1] == 0):
 					mapp[i][j+1] = 5;
 					look(x,y)
@@ -109,6 +115,7 @@ def mapping(x, y, mapp): # x and y being the current position of the bot
 					y = j+1
 					click_picture(i,j)
 					mapp[i][j+1] = 0
+					break
 				elif (i+1 <= rows and mapp[i+1][j] == 0):
 					mapp[i+1][j] = 5;
 					look(x,y)
@@ -118,6 +125,7 @@ def mapping(x, y, mapp): # x and y being the current position of the bot
 					y = j
 					click_picture(i,j)
 					mapp[i+1][j] = 0
+					break
 				elif (j-1 >= 0 and mapp[i][j-1] == 0):
 					mapp[i][j-1] = 5;
 					look(x,y)
@@ -127,5 +135,6 @@ def mapping(x, y, mapp): # x and y being the current position of the bot
 					y = j-1
 					click_picture(i,j)
 					mapp[i][j-1] = 0
+					break
 				else:
 					print "there is some error"
